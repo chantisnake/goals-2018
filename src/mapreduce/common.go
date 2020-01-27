@@ -2,6 +2,7 @@ package mapreduce
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 )
 
@@ -40,4 +41,11 @@ func reduceName(jobName string, mapTask int, reduceTask int) string {
 // mergeName constructs the name of the output file of reduce task <reduceTask>
 func mergeName(jobName string, reduceTask int) string {
 	return "mrtmp." + jobName + "-res-" + strconv.Itoa(reduceTask)
+}
+
+// check if an error is
+func checkErrPanic(err error) {
+	if err != nil {
+		log.Panic(err)
+	}
 }
